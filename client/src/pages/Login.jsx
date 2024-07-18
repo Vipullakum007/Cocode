@@ -1,7 +1,74 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './JoinRoom.css';
+import loginImg from '../assets/login.png';
 
 export default function Login() {
-  return (
-    <div>Login</div>
-  )
+
+    const [user, setUser] = useState({
+        username: '',
+        password: ''
+    });
+    const navigate = useNavigate();
+
+    const handleInput = (e) => {
+        const { name, value } = e.target;
+        setUser({ ...user, [name]: value });
+    }
+
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        console.log(user);
+
+        try {
+            const response = await fetch(`http://localhost:5000/api/auth/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(user),
+            });
+
+            console.log(response);
+
+            const responseData = await response.json();
+            console.log(responseData);
+            if (response.ok) {
+                navigate('/dashboard'); // Redirect to dashboard or desired page after login
+            } else {
+                console.log("Login failed: " + responseData.message);
+                // Handle login failure (show error message, etc.)
+            }
+        } catch (error) {
+            console.log("Login failed: " + error.message);
+        }
+    }
+
+    return (
+        <div className="section-auth">
+            <div className="container grid grid-two-cols">
+                <div className="section-auth-image">
+                    <img src={loginImg} alt="Login" width={400} height={400} />
+                </div>
+                <div className="auth-form">
+                    <h1 className="main-heading mb-3">Login</h1>
+                    <input
+                        type="text"
+                        name="username"
+                        placeholder="Username"
+                        value={user.username}
+                        onChange={handleInput}
+                    />
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        value={user.password}
+                        onChange={handleInput}
+                    />
+                    <button onClick={handleLogin} className="section-auth-button">Login</button>
+                </div>
+            </div>
+        </div>
+    );
 }

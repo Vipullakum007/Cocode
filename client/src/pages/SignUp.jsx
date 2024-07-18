@@ -2,13 +2,13 @@ import React from 'react'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './JoinRoom.css';
-import loginImg from '../assets/login.png';
+import registerImg from '../assets/register.png';
 export default function SignUp() {
 
     const [user, setUser] = useState({
-        username: '',
-        email: '',
-        password: ''
+        username: "",
+        email: "",
+        password: ""
     });
     const navigate = useNavigate();
 
@@ -49,25 +49,37 @@ export default function SignUp() {
         <div className="section-auth">
             <div className="container grid grid-two-cols">
                 <div className="section-auth-image">
-                    <img src={loginImg} alt="Sign Up" width={400} height={400} />
+                    <img src={registerImg} alt="Sign Up" width={400} height={400} />
                 </div>
                 <div className="auth-form">
                     <h1 className="main-heading mb-3">Sign Up</h1>
                     <input
-                        type="text"
-                        placeholder="Username"
-                        value={user.username}
+                        type="text" 
+                        name="username"
+                        placeholder="Enter username..."
+                        id="username" 
+                        required 
+                        autoComplete="off" 
+                        value={user.username} 
                         onChange={handleInput}
                     />
                     <input
                         type="email"
+                        name='email'
                         placeholder="Email"
+                        id='email'
+                        required
+                        autoComplete='off'
                         value={user.email}
                         onChange={handleInput}
                     />
                     <input
                         type="password"
+                        name='password'
                         placeholder="Password"
+                        id='password'
+                        required
+                        autoComplete='off'
                         value={user.password}
                         onChange={handleInput}
                     />

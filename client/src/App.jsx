@@ -5,6 +5,7 @@ import Home from './pages/Home.jsx';
 import JoinRoom from './pages/JoinRoom.jsx';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignUp from './pages/SignUp.jsx';
+import Login from './pages/Login.jsx';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/room" element={<JoinRoom />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
       <Footer />
     </BrowserRouter>
