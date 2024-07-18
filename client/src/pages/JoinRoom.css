@@ -3,20 +3,22 @@
 ** -------------------------  */
 
 .section-auth {
-    padding: 0 3.2rem;
+    padding: 1rem 3.2rem;
 
     & .container {
         /* background-color: #fff; */
         padding-top: 3.2rem;
         align-items: center;
+        justify-content: center;
 
         & img {
-            width: 80%;
-            height: auto;
+            width: 400px;
+            height: 400px;
         }
     }
 
     & .auth-form {
+        width: 30%;
         & label {
             display: block;
             margin: 2.4rem 0 0.8rem 0;
@@ -69,27 +71,6 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-}
-
-.section-auth-content {
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.section-auth-heading {
-    font-size: 2rem;
-    margin-bottom: 20px;
-}
-
-.section-auth-input {
-    width: 93%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1em;
 }
 
 .section-auth-button {
