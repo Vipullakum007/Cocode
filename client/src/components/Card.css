@@ -62,5 +62,6 @@
 
 .card-paragraph {
     font-size: 1.3rem;
-    margin: 20px 5px;
+    margin: 20px 10px;
+    line-height: 30px;
 }

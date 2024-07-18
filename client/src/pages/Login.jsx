@@ -6,7 +6,7 @@ import loginImg from '../assets/login.png';
 export default function Login() {
 
     const [user, setUser] = useState({
-        username: '',
+        email: '',
         password: ''
     });
     const navigate = useNavigate();
@@ -34,7 +34,7 @@ export default function Login() {
             const responseData = await response.json();
             console.log(responseData);
             if (response.ok) {
-                navigate('/dashboard'); // Redirect to dashboard or desired page after login
+                navigate('/room'); // Redirect to dashboard or desired page after login
             } else {
                 console.log("Login failed: " + responseData.message);
                 // Handle login failure (show error message, etc.)
@@ -53,16 +53,22 @@ export default function Login() {
                 <div className="auth-form">
                     <h1 className="main-heading mb-3">Login</h1>
                     <input
-                        type="text"
-                        name="username"
-                        placeholder="Username"
-                        value={user.username}
+                        type="email"
+                        name='email'
+                        placeholder="Email"
+                        id='email'
+                        required
+                        autoComplete='off'
+                        value={user.email}
                         onChange={handleInput}
                     />
                     <input
                         type="password"
-                        name="password"
+                        name='password'
                         placeholder="Password"
+                        id='password'
+                        required
+                        autoComplete='off'
                         value={user.password}
                         onChange={handleInput}
                     />
