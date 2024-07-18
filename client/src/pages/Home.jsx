@@ -21,7 +21,7 @@ const Home = () => {
             <section className="features">
                 <Card
                     image={editor}
-                    heading="🖥️ Editor"
+                    heading="🖥️ RealTime Editor"
                     paragraph="Create, open, edit, save, delete, and organize files and folders."
                     isOdd={1}
                 />

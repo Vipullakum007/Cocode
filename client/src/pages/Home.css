@@ -1,8 +1,9 @@
 /* Home.css */
 
 .home {
-    font-family: Arial, sans-serif;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-align: center;
+    background-color: #333;
 }
 
 .home-header {
@@ -38,7 +39,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 50px 0;
+    /* padding: 50px 0; */
     background-color: #f4f4f4;
 }
 
