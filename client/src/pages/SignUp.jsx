@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './JoinRoom.css';
 import registerImg from '../assets/register.png';
+import { useAuth } from '../store/auth';
+import { toast } from 'react-toastify';
 export default function SignUp() {
 
     const [user, setUser] = useState({
@@ -11,6 +13,7 @@ export default function SignUp() {
         password: ""
     });
     const navigate = useNavigate();
+    const { storeTokenInLS } = useAuth();
 
     const handleInput = (e) => {
         console.log(e);
@@ -37,12 +40,17 @@ export default function SignUp() {
             const responseData = await response.json();
             console.log(responseData);
             if (response.ok) {
+                toast.success('Registration Successful!');
+                storeTokenInLS(responseData.token); 
+                setUser({ username: "", email: "", password: "" });
                 navigate('/login');
             } else {
+                toast.error("Registration failed: " + responseData.message);
                 console.log("Registration failed: " + responseData.message);
             }
         } catch (error) {
-            console.log("Registration failed: " + error.message);
+            toast.error("Registration failed: " + error.message);
+            console.log("Registration failed: " + error);
         }
     }
     return (
@@ -54,13 +62,13 @@ export default function SignUp() {
                 <div className="auth-form">
                     <h1 className="main-heading mb-3">Sign Up</h1>
                     <input
-                        type="text" 
+                        type="text"
                         name="username"
                         placeholder="Enter username..."
-                        id="username" 
-                        required 
-                        autoComplete="off" 
-                        value={user.username} 
+                        id="username"
+                        required
+                        autoComplete="off"
+                        value={user.username}
                         onChange={handleInput}
                     />
                     <input

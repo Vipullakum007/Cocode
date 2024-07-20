@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import './Navbar.css'; 
-import { NavLink } from 'react-router-dom'; 
-import logo from '../assets/logo2.png'; 
+import './Navbar.css';
+import { NavLink } from 'react-router-dom';
+import logo from '../assets/logo2.png';
+import { useAuth } from '../store/auth';
 
 const Navbar = () => {
    const [dropdown, setDropdown] = useState(false);
+   const { isLoggedIn } = useAuth();
 
    return (
       <div className="navbar">
@@ -32,8 +34,16 @@ const Navbar = () => {
                   </li>
                   <li><NavLink to="/room">Room</NavLink></li>
                   <li><NavLink to="/contact">Contact</NavLink></li>
-                  <li><NavLink to="/login">Login</NavLink></li>
-                  <li><NavLink to="/signup">SignUp</NavLink></li>
+                  {
+                     isLoggedIn ?
+                        <li><NavLink to="/logout">Logout</NavLink></li>
+                        : <>
+                           <li><NavLink to="/signup">SignUp</NavLink></li>
+                           <li><NavLink to="/login">Login</NavLink></li>
+                        </>
+                  }
+
+
                </ul>
             </nav>
          </div>

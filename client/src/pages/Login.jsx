@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './JoinRoom.css';
 import loginImg from '../assets/login.png';
+import { useAuth } from '../store/auth';
+import { toast } from'react-toastify';
 
 export default function Login() {
 
@@ -10,6 +12,7 @@ export default function Login() {
         password: ''
     });
     const navigate = useNavigate();
+    const { storeTokenInLS } = useAuth();
 
     const handleInput = (e) => {
         const { name, value } = e.target;
@@ -34,8 +37,12 @@ export default function Login() {
             const responseData = await response.json();
             console.log(responseData);
             if (response.ok) {
+                toast.success('Login Successful !');
+                storeTokenInLS(responseData.token);
+                setUser({ email: "", password: "" });
                 navigate('/room'); // Redirect to dashboard or desired page after login
             } else {
+                toast.error("Login failed: " + responseData.message);
                 console.log("Login failed: " + responseData.message);
                 // Handle login failure (show error message, etc.)
             }

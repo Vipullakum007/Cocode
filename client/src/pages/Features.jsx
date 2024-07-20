@@ -5,9 +5,10 @@ import { HiChatBubbleLeftRight } from "react-icons/hi2";
 import { VscRunAll } from "react-icons/vsc";
 import { FcCollaboration } from "react-icons/fc";
 import { IoSettingsOutline } from "react-icons/io5";
+import Chat from './Chat';
 
 const Features = () => {
-    const [selectedFeature, setSelectedFeature] = useState('editor');
+    const [selectedFeature, setSelectedFeature] = useState('chat');
 
     const renderFeatureContent = () => {
         switch (selectedFeature) {
@@ -60,27 +61,28 @@ const Features = () => {
                     </div>
                 );
             case 'chat':
-                return (
-                    <div className="feature-content">
-                        <div className="chat-container">
-                            <h2>Group Chat</h2>
-                            <hr />
-                            <div className="chat-block">
-                                {/* <h3>Chats</h3> */}
-                                {/* Chat display component goes here */}
-                            </div>
-                        </div>
+                <Chat />
+                // return (
+                //     <div className="feature-content">
+                //         <div className="chat-container">
+                //             <h2>Group Chat</h2>
+                //             <hr />
+                //             <div className="chat-block">
+                //                 {/* <h3>Chats</h3> */}
+                //                 {/* Chat display component goes here */}
+                //             </div>
+                //         </div>
 
-                        <div className="editor">
+                //         <div className="editor">
 
-                            <h2>Editor</h2>
-                            <div className="editor-block">
-                                <h3>File and Folders</h3>
-                                <textarea placeholder="Write your code here..."></textarea>
-                            </div>
-                        </div>
-                    </div>
-                );
+                //             <h2>Editor</h2>
+                //             <div className="editor-block">
+                //                 <h3>File and Folders</h3>
+                //                 <textarea placeholder="Write your code here..."></textarea>
+                //             </div>
+                //         </div>
+                //     </div>
+                // );
             case 'collaborators':
                 return (
                     <div className="feature-content">

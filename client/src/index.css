@@ -1,4 +1,3 @@
-
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -133,6 +132,12 @@ a.active {
   }
 }
 
+/* react toastify css */
+.toastBody {
+  font-family: "Atlas Grotesk web", Arial, Helvetica, sans-serif;
+  font-size: 2rem;
+  width: auto;
+}
 
 /** -----------------------
 ** registration section css

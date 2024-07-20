@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignUp from './pages/SignUp.jsx';
 import Login from './pages/Login.jsx';
 import Features from './pages/Features.jsx';
+import Logout from './pages/Logout.jsx';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/features" element={<Features />} />
+        <Route path="/logout" element={<Logout />} />
       </Routes>
       <Footer />
     </BrowserRouter>

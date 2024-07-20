@@ -17,6 +17,10 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    isAdmin: {
+        type: Boolean,
+        default: false,
     }
 });
 
@@ -40,10 +44,15 @@ userSchema.pre('save', async function (next) {
 userSchema.methods.generateToken = async function () {
     console.log('Generating token...');
     try {
-        return jwt.sign({ userId: this._id.tostring(), email: this.email, isAdmn: this.isAdmin },
+        return jwt.sign(
+            {
+                userId: this._id.toString(),
+                email: this.email,
+                isOwner: this.isOwner
+            },
             process.env.JWT_SECRET_KEY,
             {
-                expires: "30d"
+                expiresIn: "30d"
             }
         );
     } catch (error) {
